@@ -7,7 +7,8 @@ class NewGame {
   }
 
   createNewGame() {
-    eventSubscription.add({type: null, message:'Игра началась'});
+    const dateStartGame = +new Date()
+    eventSubscription.add({date: dateStartGame, type: null, message:'Игра началась'});
     const timeFirstEvent = Math.round(Math.random() * 300) * 1000;
 
     this.timer = setTimeout(function matchEvent() {
@@ -28,9 +29,10 @@ class NewGame {
       } else {
         item = matchEvents.data[0];
       }
-    
-      item.date = +new Date();
+      const dateEvent = +new Date();
+      item.date = dateEvent;
       eventSubscription.add(item);
+      console.log(item)
       this.timer = setTimeout(matchEvent, nextTimer);
     }, timeFirstEvent);
     
