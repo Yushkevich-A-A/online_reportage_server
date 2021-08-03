@@ -23,11 +23,11 @@ class NewGame {
     
       let item = null;
       if (percent <= 5) {
-        item = matchEvents.data[2];
+        item = Object.assign({}, matchEvents.data[2]);
       } else if (percent <= 8) {
-        item = matchEvents.data[1];
+        item = Object.assign({}, matchEvents.data[1]);
       } else {
-        item = matchEvents.data[0];
+        item = Object.assign({}, matchEvents.data[0]);
       }
       const dateEvent = +new Date();
       item.date = dateEvent;
