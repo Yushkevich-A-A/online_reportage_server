@@ -32,7 +32,6 @@ class NewGame {
       const dateEvent = +new Date();
       item.date = dateEvent;
       eventSubscription.add(item);
-      console.log(item)
       this.timer = setTimeout(matchEvent, nextTimer);
     }, timeFirstEvent);
     
