@@ -12,12 +12,12 @@ class NewGame {
     this.timer = setTimeout(function matchEvent() {
       if (eventSubscription.data.length === 50) {
         eventSubscription.add({type: null, message:'Игра окончена'});
-        clearTimeout(timer);
+        clearTimeout(this.timer);
         return;
       }
+
       const percent = Math.round(Math.random() * 10);
-      console.log(percent);
-      const nextTimer = Math.round(Math.random() * 10) * 1000;
+      const nextTimer = Math.round(Math.random() * 20) * 1000;
     
       let item = null;
       if (percent >= 5) {
@@ -31,8 +31,15 @@ class NewGame {
       item.date = Date.now();
       eventSubscription.add(item);
       this.timer = setTimeout(matchEvent, nextTimer);
-    }, 5000)
+    }, 5000);
+    
+  }
 
+  resetGame() {
+    setTimeout(() => {
+      eventSubscription.lenght = '';
+      this.createNewGame();
+    })
   }
 }
 
